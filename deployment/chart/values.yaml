@@ -16,7 +16,7 @@ image:
   backend:
     repository: mokhlesur96/go-app
     pullPolicy: IfNotPresent
-    tag: 1.0.0
+    tag: ecd23f46796367ab5d94ea71523075b161a715c2
 
   database:
     repository: postgres
