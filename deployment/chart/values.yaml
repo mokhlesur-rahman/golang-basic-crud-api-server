@@ -1,18 +1,41 @@
-# Default values for chart.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
 replicaCount: 1
 
+database:
+  POSTGRES_DB: go_app_db
+  POSTGRES_USER: YWRtaW4=
+  POSTGRES_PASSWORD: c2VjcmV0
+
+sts:
+  hostPath.type: DirectoryOrCreate
+  mountPath: /var/lib/postgresql/data
+  hostPath: /usr/k8s
+  volume_name: psql-storage
+  storageClassName: standard
+
 image:
-  repository: nginx
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  backend:
+    repository: mokhlesur96/go-app
+    pullPolicy: IfNotPresent
+    tag: 84239b87887a23e717a0ae06425a6ef93e64440e
+
+  database:
+    repository: postgres
+    pullPolicy: IfNotPresent
+    tag: latest
+
+service:
+  backend:
+    type: NodePort
+    port: 8081
+    protocol: TCP
+
+  database:
+    type: ClusterIP
+    port: 5432
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: "go-api"
+fullnameOverride: "go-api"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -36,9 +59,7 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-service:
-  type: ClusterIP
-  port: 80
+
 
 ingress:
   enabled: false
@@ -70,7 +91,7 @@ resources: {}
 
 autoscaling:
   enabled: false
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80

@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "chart.fullname" . }}-db-sts
+  labels:
+    app: {{ include "chart.fullname" . }}-db-sts
+
+spec:
+  serviceName: {{ include "chart.fullname" . }}-db-sts-svc
+  replicas: {{ .Values.replicaCount }}
+
+  selector:
+    matchLabels:
+      app: psql
+
+  template:
+    metadata:
+      labels:
+        app: psql
+
+    spec:
+      volumes:
+        - name: {{ .Values.sts.volume_name }}
+          hostPath:
+            path: {{ .Values.sts.hostPath }}
+
+      containers:
+        - name: postgresql
+          image: {{ .Values.image.database.repository }}:{{ .Values.image.database.tag }}
+          imagePullPolicy: {{ .Values.image.database.pullPolicy }}
+          envFrom:
+            - secretRef:
+                name: {{ include "chart.fullname" . }}-db-secrets
+            - configMapRef:
+                name: {{ include "chart.fullname" . }}-db-configmap
+
+          ports:
+            - containerPort: {{ required "Port not defined" .Values.service.database.port }}
+              name: postgresql
+
+          volumeMounts:
+            - name: {{ .Values.sts.volume_name }}
+              mountPath: {{ .Values.sts.mountPath }}
+              subPath: postgres

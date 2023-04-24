@@ -1,8 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go-server-depl
-#  namespace: client-ns
+  name: go-api-client-depl
 
 spec:
   replicas: 1

@@ -1,5 +1,5 @@
 docker_database:
-  POSTGRESQL_ADDON_HOST: psql-svc
+  POSTGRESQL_ADDON_HOST: go-api-db-svc
   POSTGRESQL_ADDON_PORT: 5432
   POSTGRESQL_ADDON_DB: go_app_db
   POSTGRESQL_ADDON_USER: admin
@@ -13,4 +13,4 @@ local_database:
   POSTGRESQL_ADDON_PASSWORD: secret
 
 current_db:
-  RUNNING: local_database
+  RUNNING: docker_database

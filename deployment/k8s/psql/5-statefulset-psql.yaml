@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: psql-statefulset
+  name: go-api-db-sts
 #  namespace: psql-ns
   labels:
-    app: psql-statefulset
+    app: go-api-db-sts
 
 
 spec:
-  serviceName: psql-db-svc
+  serviceName: go-api-db-svc
   replicas: 1
 
   selector:
@@ -24,7 +24,7 @@ spec:
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
-            claimName: psql-pvc
+            claimName: go-api-db-pvc
 
       containers:
         - name: postgresql
@@ -32,9 +32,9 @@ spec:
           imagePullPolicy: IfNotPresent
           envFrom:
             - secretRef:
-                name: psql-secret
+                name: go-api-db-secret
             - configMapRef:
-                name: psql-config
+                name: go-api-db-config
 
           ports:
             - containerPort: 5432
