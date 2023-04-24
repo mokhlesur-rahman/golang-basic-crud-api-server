@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: go-image
-          image: mokhlesur96/go-app:84239b87887a23e717a0ae06425a6ef93e64440e
+          image: mokhlesur96/go-app:1.0.0
           ports:
             - containerPort: 8081
 

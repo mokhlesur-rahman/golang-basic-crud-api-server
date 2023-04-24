@@ -4,7 +4,7 @@ services:
 
   database:
     image: postgres
-    container_name: go_db
+    container_name: go-api-db-svc
     ports:
       - 5432:5432
     environment:
@@ -31,13 +31,13 @@ services:
     networks:
       - go-app-network
     environment:
-      - POSTGRESQL_ADDON_HOST=go_db
+      - POSTGRESQL_ADDON_HOST=go-api-db-svc
       - POSTGRESQL_ADDON_PORT=5432
       - POSTGRESQL_ADDON_USER=admin
       - POSTGRESQL_ADDON_PASSWORD=secret
       - POSTGRESQL_ADDON_DB=go_app_db
 
-    entrypoint: [ "/app/wait-for.sh", "go_db:5432", "--", "/app/main" ]
+    entrypoint: [ "/app/wait-for.sh", "go-api-db-svc:5432", "--", "/app/main" ]
     command: [ "serve" ]
 
 
