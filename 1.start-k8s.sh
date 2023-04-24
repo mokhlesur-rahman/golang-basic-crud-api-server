@@ -20,14 +20,14 @@ kubectl apply -f deployment/k8s/client/2-service-client.yaml &&
 kubectl apply -f deployment/k8s/client/3-ingress-client.yaml &&
 
 echo "Client deployment is up and running"
-echo "Waiting for 5 seconds..."
+echo "Waiting for 10 seconds..."
 sleep 10
 
 echo "Starting port forwarding..."
 echo "--------------------------"
 
 # Start port-forwarding in the background
-kubectl port-forward services/go-svc 8081:8081 &
+kubectl port-forward services/go-api-client-svc 8081:8081 &
 
 echo "Port forwarding is running in the background. To stop, run: kill $!"
 

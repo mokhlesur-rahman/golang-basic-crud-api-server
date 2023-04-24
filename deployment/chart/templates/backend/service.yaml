@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "chart.fullname" . }}-backend-svc
+
+spec:
+  selector:
+    app: go-server
+
+  ports:
+    - name: go-server
+      port: {{ .Values.service.backend.port }}
+      targetPort: {{ .Values.service.backend.port }}
+      protocol: {{ .Values.service.backend.protocol }}
+
+  type: {{ .Values.service.backend.type }}

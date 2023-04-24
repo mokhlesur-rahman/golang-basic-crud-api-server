@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: psql-pv
+  name: go-api-db-pv
   labels:
     type: psql
 #  namespace: psql-ns
