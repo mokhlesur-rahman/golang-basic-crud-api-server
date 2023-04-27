@@ -14,7 +14,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /usr/k8s
+    path: /usr/k8s/kub
     type: DirectoryOrCreate
 
 

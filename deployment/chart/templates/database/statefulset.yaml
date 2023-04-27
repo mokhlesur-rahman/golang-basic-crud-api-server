@@ -24,6 +24,7 @@ spec:
         - name: {{ .Values.sts.volume_name }}
           hostPath:
             path: {{ .Values.sts.hostPath }}
+            type: {{ .Values.sts.hostPathType }}
 
       containers:
         - name: postgresql

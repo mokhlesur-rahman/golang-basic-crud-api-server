@@ -1,0 +1,10 @@
+repositories:
+  - name: go-server
+    url: https://example.com/charts
+
+releases:
+  - name: my-chart-release
+    namespace: my-namespace
+    chart: deployment/chart
+    values:
+      myValue: "my custom value"

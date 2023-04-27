@@ -1,5 +1,5 @@
 replicaCount: 1
-namespace: go-api-server
+namespace: go-api-server-helm
 
 database:
   POSTGRES_DB: go_app_db
@@ -7,11 +7,11 @@ database:
   POSTGRES_PASSWORD: c2VjcmV0
 
 sts:
-  hostPath.type: DirectoryOrCreate
+  hostPathType: DirectoryOrCreate
   mountPath: /var/lib/postgresql/data
-  hostPath: /usr/k8s
+  hostPath: /usr/k8s/helm
   volume_name: psql-storage
-  storageClassName: standard
+  storageClassName: hostpath
 
 image:
   backend:
