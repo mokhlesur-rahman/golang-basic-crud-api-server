@@ -1,0 +1,8 @@
+creation_rules:
+  - pgp: DF53F9E9CE2900EBFE78C37556F8C068C89B80AC
+  - path_regex: .*/database/*
+
+
+#creation_rules:
+#  - pgp: >-
+#      DF53F9E9CE2900EBFE78C37556F8C068C89B80AC
