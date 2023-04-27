@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: test-db-sts
+  labels:
+    app: test-db-sts
+
+
+spec:
+  serviceName: test-svc
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: test_psql
+
+  template:
+    metadata:
+      labels:
+        app: test_psql
+
+    spec:
+      containers:
+        - name: postgresql
+          image: postgres:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POSTGRES_USER
+              value: admin
+            - name: POSTGRES_PASSWORD
+              value: secret
+            - name: POSTGRES_DB
+              value: test_db
+
+          ports:
+            - containerPort: 5432
+              name: postgresql

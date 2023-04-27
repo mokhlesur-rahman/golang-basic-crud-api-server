@@ -1,4 +1,5 @@
 replicaCount: 1
+namespace: go-api-server
 
 database:
   POSTGRES_DB: go_app_db

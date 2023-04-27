@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: go-api-db-svc
-#  namespace: psql-ns
+  namespace: go-api-server
 
 spec:
   selector:

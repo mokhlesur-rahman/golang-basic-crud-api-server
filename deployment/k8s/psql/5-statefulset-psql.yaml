@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: go-api-db-sts
-#  namespace: psql-ns
+  namespace: go-api-server
   labels:
     app: go-api-db-sts
 
