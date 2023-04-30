@@ -1,14 +1,11 @@
 replicaCount: 1
 namespace: go-api-server-helm
 
-database:
-  POSTGRES_DB: go_app_db
-  POSTGRES_USER: YWRtaW4=
-  POSTGRES_PASSWORD: c2VjcmV0
+#database:
+#  POSTGRES_DB: go_app_db
+#  POSTGRES_USER: YWRtaW4=
+#  POSTGRES_PASSWORD: c2VjcmV0
 
-  sops:
-    POSTGRES_USER: ENC[AES256_GCM,data:SO4hJeSgY5c=,iv:bh9BwBmL40cHJTAB1bBbdhH7DYf0L8jUkVbYMBM6+BY=,tag:mdjyyEjanI245S03JFkQLQ==,type:str]
-    POSTGRES_PASSWORD: ENC[AES256_GCM,data:u4NGSgJan3U=,iv:Br+WDYgAD0pRTWVUmeXH15IDB6xzFC5jMfmKu+ex6KM=,tag:SyZ52qeCYodzt7tC2ExKHw==,type:str]
 
 sts:
   hostPathType: DirectoryOrCreate
