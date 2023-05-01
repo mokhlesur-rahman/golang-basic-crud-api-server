@@ -5,7 +5,7 @@ releases:
     namespace: go-app
     labels:
       component: app
-    chart: './chart'
+    chart: './'
     version: 0.1.0
     secrets:
       - values/development/encrypted_secrets2.yaml
