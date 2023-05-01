@@ -55,7 +55,10 @@ jobs:
         run: helmfile lint -f deployment/chart/helmfile.yaml
 
       - name: Helm linter
-        run: helm lint
+        run: |
+          ls
+          pwd
+          helm lint
 
 
       - name: Build the golang application 
