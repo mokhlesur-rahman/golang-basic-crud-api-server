@@ -32,6 +32,13 @@ jobs:
           version: '3.7.3' # default is latest stable
         id: install
 
+      - name: Install and import GnuPG(GPG)
+        run: |
+          sudo apt-get install gnupg
+          ls
+          pwd
+
+
       - name: Test Version
         run: |
           sops --version
