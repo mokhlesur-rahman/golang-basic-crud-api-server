@@ -28,9 +28,9 @@ jobs:
 
       - name: Install sops
         run: |
-          sudo mkdir -p $GOPATH/src/go.mozilla.org/sops/
-          sudo git clone https://github.com/mozilla/sops.git $GOPATH/src/go.mozilla.org/sops/
-          cd $GOPATH/src/go.mozilla.org/sops/
+          sudo mkdir -p /src/sops/
+          sudo git clone https://github.com/mozilla/sops.git /src/sops/
+          cd /src/sops/
           git checkout develop
           make install
           sops --version
