@@ -29,6 +29,9 @@ jobs:
           helm version 
           kubectl version --client
 
+      - name: Helmfile linter
+        run: helmfile lint -f deployment/chart/helmfile.yaml
+
 
       - name: Build the golang application 
         run: go build -o main .
