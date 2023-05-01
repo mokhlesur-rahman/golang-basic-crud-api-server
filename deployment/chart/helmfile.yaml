@@ -1,0 +1,12 @@
+repositories:
+
+releases:
+  - name: go-app
+    namespace: go-app
+    labels:
+      component: app
+    chart: './'
+    version: 0.1.0
+    secrets:
+      - values/development/encrypted_secrets2.yaml
+

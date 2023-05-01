@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: go-api-db-config
+  namespace: go-api-server
 
 data:
   POSTGRES_DB: "go_app_db"

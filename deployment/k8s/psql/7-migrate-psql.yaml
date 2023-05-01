@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: go-api-db-migration
-#  namespace: psql-ns
+  namespace: go-api-server
 spec:
   template:
     spec:

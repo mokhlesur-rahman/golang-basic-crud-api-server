@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: go-api-client-ingress
-#  namespace: client-ns
+  namespace: go-api-server
 
 spec:
   rules:
