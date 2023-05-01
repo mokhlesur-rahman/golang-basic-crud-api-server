@@ -38,6 +38,7 @@ jobs:
           ls
           pwd
           gpg --import deployment/chart/values/development/public.key
+          gpg --list-keys
 
 
       - name: Test Version
