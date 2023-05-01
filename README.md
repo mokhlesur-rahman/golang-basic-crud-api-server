@@ -65,3 +65,7 @@
    }
     
     ```
+
+
+
+gpg --export --armor DF53F9E9CE2900EBFE78C37556F8C068C89B80AC > deployment/chart/values/development/public.key
