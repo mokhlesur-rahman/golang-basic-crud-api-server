@@ -37,6 +37,7 @@ jobs:
           sudo apt-get install gnupg
           ls
           pwd
+          gpg --import deployment/chart/values/development/public.key
 
 
       - name: Test Version
