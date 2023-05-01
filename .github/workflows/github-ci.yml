@@ -26,16 +26,11 @@ jobs:
       - name: Install helm-secrets plugin
         run: helm plugin install https://github.com/jkroepke/helm-secrets --version 3.9.0
 
-      - name: Install sops
-        run: |
-          sudo mkdir -p /src/sops/
-          sudo chown -R $USER:$USER /src/sops
-          cd /src/sops
-          git clone https://github.com/mozilla/sops.git
-          cd sops/
-          git checkout develop
-          make install
-          sops --version
+      - name: Sops Binary Installer
+        uses: mdgreenwald/mozilla-sops-action@v1.4.1
+        with:
+          version: '3.7.3' # default is latest stable
+        id: install
 
       - name: Test Version
         run: |
