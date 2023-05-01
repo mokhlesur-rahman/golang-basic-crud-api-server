@@ -34,10 +34,23 @@ jobs:
 
       - name: Install and import GnuPG(GPG)
         run: |
-          sudo apt-get install gnupg
+          sudo apt-get update
+          sudo apt-get install -y libgpg-error-dev libassuan-dev libksba-dev libgcrypt20-dev libreadline-dev libpcre3-dev libusb-dev libbz2-dev liblzma-dev
+          wget https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.0.tar.bz2
+          tar -xjf gnupg-2.4.0.tar.bz2
+          cd gnupg-2.4.0
+          ./configure --prefix=/usr/local/gnupg-2.4.0 --enable-symcryptrun --enable-maintainer-mode
+          make -j$(nproc)
+          sudo make install
+          gpg --version 
           gpg --list-keys
-          gpg --import deployment/chart/values/development/public.key
-          gpg --list-keys
+
+#        run: |
+#
+#          sudo apt-get install gnupg
+#          gpg --list-keys
+#          gpg --import deployment/chart/values/development/public.key
+#          gpg --list-keys
           
 
       - name: Test Version
