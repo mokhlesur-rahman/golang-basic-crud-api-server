@@ -37,7 +37,6 @@ jobs:
           sudo apt-get install gnupg
           gpg --list-keys
           gpg --import deployment/chart/values/development/public.key
-#          gpg --import deployment/chart/values/development/secret.key
           echo "Listing keys"
           gpg --list-keys
           echo "Listing secret keys"
