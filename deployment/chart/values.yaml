@@ -6,11 +6,12 @@ namespace: go-api-server-helm
 #  POSTGRES_USER: YWRtaW4=
 #  POSTGRES_PASSWORD: c2VjcmV0
 
+POSTGRES_DB: go_app_db
 
 sts:
   hostPathType: DirectoryOrCreate
   mountPath: /var/lib/postgresql/data
-  hostPath: /usr/k8s/helm
+  hostPath: /usr/k8s/hf
   volume_name: psql-storage
   storageClassName: hostpath
 

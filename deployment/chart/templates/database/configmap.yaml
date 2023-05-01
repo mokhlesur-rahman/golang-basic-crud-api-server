@@ -5,5 +5,5 @@ metadata:
 {{/*  namespace: {{ .Values.namespace }}*/}}
 
 data:
-  POSTGRES_DB: {{ required "POSTGRES_DB not set" .Values.database.POSTGRES_DB }}
+  POSTGRES_DB: {{ required "POSTGRES_DB not set" .Values.POSTGRES_DB }}
 
