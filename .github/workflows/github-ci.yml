@@ -35,6 +35,7 @@ jobs:
       - name: Install and import GnuPG(GPG)
         run: |
           sudo apt-get update
+          sudo apt install build-essential bzip2 libassuan-dev libgcrypt20-dev libgpg-error-dev libksba-dev libnpth0-dev
           sudo apt-get install -y libgpg-error-dev libassuan-dev libksba-dev libgcrypt20-dev libreadline-dev libpcre3-dev libusb-dev libbz2-dev liblzma-dev
           wget https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.0.tar.bz2
           tar -xjf gnupg-2.4.0.tar.bz2
