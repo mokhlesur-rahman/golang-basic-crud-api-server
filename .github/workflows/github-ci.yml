@@ -27,7 +27,13 @@ jobs:
         run: helm plugin install https://github.com/jkroepke/helm-secrets --version 3.9.0
 
       - name: Install sops
-        run: sudo apt-get update && sudo apt-get install -y sops
+        run: |
+          mkdir -p $GOPATH/src/go.mozilla.org/sops/
+          git clone https://github.com/mozilla/sops.git $GOPATH/src/go.mozilla.org/sops/
+          cd $GOPATH/src/go.mozilla.org/sops/
+          git checkout develop
+          make install
+          sops --version
 
       - name: Test Version
         run: |
