@@ -32,6 +32,7 @@ jobs:
           sudo chown -R $USER:$USER /src/sops
           cd /src/sops
           git clone https://github.com/mozilla/sops.git
+          cd sops/
           git checkout develop
           make install
           sops --version
