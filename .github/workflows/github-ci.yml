@@ -18,6 +18,18 @@ jobs:
       - name: Checkoout to latest code 
         uses: actions/checkout@v2
 
+      - name: Setup helmfile
+        uses: mamezou-tech/setup-helmfile@v1.2.0
+        with:
+          helmfile-version: "v0.135.0"
+
+      - name: Test
+        run: |
+          helmfile --version 
+          helm version 
+          kubectl version --client
+
+
       - name: Build the golang application 
         run: go build -o main .
 
@@ -39,12 +51,12 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - name: Echo confirming we are on main branch 
-        run: echo "swiched to main branch"
+        run: echo "switched to main branch"
 
       - name: Push built file to docker repository
         run: echo "Pushing image to dockerhub repository"
 
-      - name: Checkoout to code 
+      - name: Checkout to code
         uses: actions/checkout@v3
 
       - name: Building and Pushing docker image 
