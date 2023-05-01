@@ -55,6 +55,7 @@ jobs:
 
       - name: Helm linter
         run: |
+          cd deployment/chart
           ls
           pwd
           helm lint
