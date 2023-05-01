@@ -29,6 +29,7 @@ jobs:
       - name: Install sops
         run: |
           sudo mkdir -p /src/sops/
+          sudo chown -R $USER:$USER /src/sops
           cd /src/sops
           git clone https://github.com/mozilla/sops.git
           git checkout develop
