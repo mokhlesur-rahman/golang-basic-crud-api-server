@@ -1,10 +1,10 @@
 replicaCount: 1
 namespace: go-api-server-helm
 
-#database:
-#  POSTGRES_DB: go_app_db
-#  POSTGRES_USER: YWRtaW4=
-#  POSTGRES_PASSWORD: c2VjcmV0
+database:
+  POSTGRES_DB: go_app_db
+  POSTGRES_USER: YWRtaW4=
+  POSTGRES_PASSWORD: c2VjcmV0
 
 POSTGRES_DB: go_app_db
 

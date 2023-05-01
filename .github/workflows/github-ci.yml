@@ -10,6 +10,57 @@ on:
       - main
   
 jobs:
+  linter:
+    name: Linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkoout to latest code
+        uses: actions/checkout@v2
+
+      - name: Setup helmfile
+        uses: mamezou-tech/setup-helmfile@v1.2.0
+        with:
+          helmfile-version: "v0.153.1"
+
+      - name: Install helm-secrets plugin
+        run: helm plugin install https://github.com/jkroepke/helm-secrets --version 3.9.0
+
+      - name: Sops Binary Installer
+        uses: mdgreenwald/mozilla-sops-action@v1.4.1
+        with:
+          version: '3.7.3'
+        id: install
+
+      - name: Install and import GnuPG(GPG)
+        run: |
+          sudo apt-get install gnupg
+          gpg --list-keys
+          gpg --import deployment/chart/values/development/public.key
+          gpg --import deployment/chart/values/development/secret.key
+          echo "Listing keys"
+          gpg --list-keys
+          echo "Listing secret keys"
+          gpg --list-secret-keys --with-colons
+
+      - name: Test Version
+        run: |
+          sops --version
+          helmfile --version 
+          helm version 
+          kubectl version --client
+          gpg --version
+
+      - name: Helmfile linter
+        run: helmfile lint -f deployment/chart/helmfile.yaml
+
+      - name: Helm linter
+        run: |
+          cd deployment/chart
+          ls
+          pwd
+          helm lint
+      
+
   build:
     name: Build 
     runs-on: ubuntu-latest
@@ -39,12 +90,12 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - name: Echo confirming we are on main branch 
-        run: echo "swiched to main branch"
+        run: echo "switched to main branch"
 
       - name: Push built file to docker repository
         run: echo "Pushing image to dockerhub repository"
 
-      - name: Checkoout to code 
+      - name: Checkout to code
         uses: actions/checkout@v3
 
       - name: Building and Pushing docker image 
