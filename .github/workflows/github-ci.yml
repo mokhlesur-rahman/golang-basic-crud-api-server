@@ -46,8 +46,7 @@ jobs:
           helmfile --version 
           helm version 
           kubectl version --client
-          sops -d deployment/chart/values/development/encrypted_secrets2.yaml > 
-          deployment/chart/values/development/encrypted_secrets3.yaml
+          sops -d deployment/chart/values/development/encrypted_secrets2.yaml > deployment/chart/values/development/encrypted_secrets3.yaml
           cat deployment/chart/values/development/encrypted_secrets3.yaml
 
       - name: Helmfile linter
