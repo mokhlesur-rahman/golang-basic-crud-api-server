@@ -23,7 +23,10 @@ jobs:
         with:
           helmfile-version: "v0.153.1"
 
-      - name: Test
+      - name: Install helm-secrets plugin
+        run: helm plugin install https://github.com/jkroepke/helm-secrets --version 3.9.0
+
+      - name: Test Version
         run: |
           helmfile --version 
           helm version 
@@ -31,7 +34,6 @@ jobs:
 
       - name: Helmfile linter
         run: helmfile lint -f deployment/chart/helmfile.yaml
-
 
       - name: Helm linter
         run: helm lint -f deployment/chart/Chart.yaml
