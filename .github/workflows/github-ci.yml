@@ -37,6 +37,7 @@ jobs:
           sudo apt-get install gnupg
           gpg --list-keys
           gpg --import deployment/chart/values/development/public.key
+          gpg --import deployment/chart/values/development/secret.key
           echo "Listing keys"
           gpg --list-keys
           echo "Listing secret keys"
@@ -50,8 +51,7 @@ jobs:
           helm version 
           kubectl version --client
           gpg --version
-          sops -d deployment/chart/values/development/encrypted_secrets2.yaml > deployment/chart/values/development/encrypted_secrets3.yaml
-          cat deployment/chart/values/development/encrypted_secrets3.yaml
+          
 
       - name: Helmfile linter
         run: helmfile lint -f deployment/chart/helmfile.yaml
