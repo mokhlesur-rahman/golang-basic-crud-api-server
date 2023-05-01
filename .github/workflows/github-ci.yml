@@ -21,7 +21,7 @@ jobs:
       - name: Setup helmfile
         uses: mamezou-tech/setup-helmfile@v1.2.0
         with:
-          helmfile-version: "v0.135.0"
+          helmfile-version: "v0.153.1"
 
       - name: Test
         run: |
@@ -31,6 +31,10 @@ jobs:
 
       - name: Helmfile linter
         run: helmfile lint -f deployment/chart/helmfile.yaml
+
+
+      - name: Helm linter
+        run: helm lint -f deployment/chart/Chart.yaml
 
 
       - name: Build the golang application 
