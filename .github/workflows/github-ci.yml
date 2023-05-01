@@ -38,7 +38,8 @@ jobs:
           gpg --list-keys
           gpg --import deployment/chart/values/development/public.key
           gpg --list-keys
-          
+          gpg --list-secret-keys
+      
 
       - name: Test Version
         run: |
