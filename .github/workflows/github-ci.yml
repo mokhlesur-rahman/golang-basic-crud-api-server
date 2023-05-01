@@ -32,11 +32,11 @@ jobs:
           version: '3.7.3'
         id: install
 
-#      - name: Install and import GnuPG(GPG)
-#        run: |
-#          sudo apt-get install gnupg
+      - name: Install and import GnuPG(GPG)
+        run: |
+          sudo apt-get install gnupg
 #          gpg --import deployment/chart/values/development/public.key
-#          gpg --list-keys
+          gpg --list-keys
         
 
 
