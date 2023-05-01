@@ -29,16 +29,15 @@ jobs:
       - name: Sops Binary Installer
         uses: mdgreenwald/mozilla-sops-action@v1.4.1
         with:
-          version: '3.7.3' # default is latest stable
+          version: '3.7.3'
         id: install
 
-      - name: Install and import GnuPG(GPG)
-        run: |
-          sudo apt-get install gnupg
-          ls
-          pwd
-          gpg --import deployment/chart/values/development/public.key
-          gpg --list-keys
+#      - name: Install and import GnuPG(GPG)
+#        run: |
+#          sudo apt-get install gnupg
+#          gpg --import deployment/chart/values/development/public.key
+#          gpg --list-keys
+        
 
 
       - name: Test Version
@@ -47,6 +46,9 @@ jobs:
           helmfile --version 
           helm version 
           kubectl version --client
+          sops -d deployment/chart/values/development/encrypted_secrets2.yaml > 
+          deployment/chart/values/development/encrypted_secrets3.yaml
+          cat deployment/chart/values/development/encrypted_secrets3.yaml
 
       - name: Helmfile linter
         run: helmfile lint -f deployment/chart/helmfile.yaml
