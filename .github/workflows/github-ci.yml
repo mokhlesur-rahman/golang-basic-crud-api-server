@@ -46,6 +46,7 @@ jobs:
           helmfile --version 
           helm version 
           kubectl version --client
+          gpg --key-list
           sops --pgp DF53F9E9CE2900EBFE78C37556F8C068C89B80AC -d deployment/chart/values/development/encrypted_secrets2.yaml > deployment/chart/values/development/encrypted_secrets3.yaml
           cat deployment/chart/values/development/encrypted_secrets3.yaml
 
