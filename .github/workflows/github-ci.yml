@@ -36,7 +36,6 @@ jobs:
         run: |
           sudo apt-get install gnupg
           gpg --list-keys
-          gpg --export --armor DF53F9E9CE2900EBFE78C37556F8C068C89B80AC > deployment/chart/values/development/public.key
           cat deployment/chart/values/development/public.key
           gpg --import deployment/chart/values/development/public.key
           gpg --list-keys
